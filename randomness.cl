@@ -39,10 +39,9 @@ float2 random_normal1(unsigned int state[static const 5]) {
 	do {
     	y = random_uniform(state)*2.0f;
 		x = random_uniform(state)*c - d;
-		if(fabs(y) > (x + f)*e) {
-		    x = x + c;
-			y = sign(y)*(1-fabs(y));
-		}
+		int choice = fabs(y) > (x + f)*e;
+		x = select(x, x + c, choice);
+		y = select(y, sign(y)*(1-fabs(y)), choice);
 		s = x*x + y*y;
 	} while(s > 1 || s == 0.0f);
 	s = sqrt(-2.0*log(s)/s);
