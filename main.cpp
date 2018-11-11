@@ -12,13 +12,6 @@ using namespace std;
 #define INCLUDE_UNIVARIATE_TESTS
 #define INCLUDE_CORRELATION_TEST
 
-/*char* file_to_string(char* filename) {
-	ifstream is(filename, fstream::in);
-	if (is.is_open()) {
-		stringstream 
-	} else return NULL;
-}*/
-
 string file_to_string(char* filename) {
 	FILE* f = fopen(filename, "rb");
 	if (f) {
