@@ -123,7 +123,7 @@ int main(int argc, char** argv) {
 	moment_test_kernel.setArg(0, output_buffer);
 	//moment_test_kernel.setArg(1, 1); //p
 	//moment_test_kernel.setArg(2, 1); //mode
-	moment_test_kernel.setArg(3, (N/output_buffer_size + 1)*output_buffer_size);
+	moment_test_kernel.setArg(3, N/output_buffer_size + 1);
 
 	char* t[] = {"mean", "variance", "skewness"};
 	for (cl_int i = 0; i != 3; ++i) {
@@ -152,7 +152,7 @@ int main(int argc, char** argv) {
 
 #ifdef INCLUDE_CORRELATION_TEST
 	correlation_test_kernel.setArg(0, output_buffer);
-	correlation_test_kernel.setArg(2, (N / output_buffer_size + 1)*output_buffer_size); //N
+	correlation_test_kernel.setArg(2, N / output_buffer_size + 1); //N
 	for (cl_int i = 0; i != 3; ++i) {
 		correlation_test_kernel.setArg(1, i + 1); //mode
 
